@@ -25,6 +25,14 @@ router.get('/:id', (req, res) => {
             attributes: ['id', 'title', 'post_url', 'created_at']
           },
           {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'created_at'],
+            include: {
+              model: Post,
+              attributes: ['title']
+            }
+          },
+          {
              //recieve title info of every post they have voted on and contextualize with vote
             model: Post,
             attributes: ['title'],
